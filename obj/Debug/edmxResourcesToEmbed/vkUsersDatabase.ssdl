@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="vkDBUsersNamespace.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="vkDBUsersNamespaceStoreContainer">
+    <EntitySet Name="Comment" EntityType="vkDBUsersNamespace.Store.Comment" store:Type="Tables" Schema="tachki88_devco" />
+    <EntitySet Name="Comment_Contains_Material" EntityType="vkDBUsersNamespace.Store.Comment_Contains_Material" store:Type="Tables" Schema="tachki88_devco" />
+    <EntitySet Name="Community" EntityType="vkDBUsersNamespace.Store.Community" store:Type="Tables" Schema="tachki88_devco" />
+    <EntitySet Name="Community_Contains_Comment" EntityType="vkDBUsersNamespace.Store.Community_Contains_Comment" store:Type="Tables" Schema="tachki88_devco" />
+    <EntitySet Name="Community_Contains_User" EntityType="vkDBUsersNamespace.Store.Community_Contains_User" store:Type="Tables" Schema="tachki88_devco" />
+    <EntitySet Name="Material" EntityType="vkDBUsersNamespace.Store.Material" store:Type="Tables" Schema="tachki88_devco" />
+    <EntitySet Name="Message" EntityType="vkDBUsersNamespace.Store.Message" store:Type="Tables" Schema="tachki88_devco" />
+    <EntitySet Name="Message_IncludeIn_MessagingList" EntityType="vkDBUsersNamespace.Store.Message_IncludeIn_MessagingList" store:Type="Tables" Schema="tachki88_devco" />
+    <EntitySet Name="MessagingList" EntityType="vkDBUsersNamespace.Store.MessagingList" store:Type="Tables" Schema="tachki88_devco" />
+    <EntitySet Name="MessagingList_Contains_User" EntityType="vkDBUsersNamespace.Store.MessagingList_Contains_User" store:Type="Tables" Schema="tachki88_devco" />
+    <EntitySet Name="Place" EntityType="vkDBUsersNamespace.Store.Place" store:Type="Tables" Schema="tachki88_devco" />
+    <EntitySet Name="Settings" EntityType="vkDBUsersNamespace.Store.Settings" store:Type="Tables" Schema="tachki88_devco" />
+    <EntitySet Name="User" EntityType="vkDBUsersNamespace.Store.User" store:Type="Tables" Schema="tachki88_devco" />
+    <AssociationSet Name="Comment_idUser" Association="vkDBUsersNamespace.Store.Comment_idUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="Comment_Material_idComment" Association="vkDBUsersNamespace.Store.Comment_Material_idComment">
+      <End Role="Comment" EntitySet="Comment" />
+      <End Role="Comment_Contains_Material" EntitySet="Comment_Contains_Material" />
+    </AssociationSet>
+    <AssociationSet Name="Comment_Material_idMaterial" Association="vkDBUsersNamespace.Store.Comment_Material_idMaterial">
+      <End Role="Material" EntitySet="Material" />
+      <End Role="Comment_Contains_Material" EntitySet="Comment_Contains_Material" />
+    </AssociationSet>
+    <AssociationSet Name="Community_Comment_idComment" Association="vkDBUsersNamespace.Store.Community_Comment_idComment">
+      <End Role="Comment" EntitySet="Comment" />
+      <End Role="Community_Contains_Comment" EntitySet="Community_Contains_Comment" />
+    </AssociationSet>
+    <AssociationSet Name="Community_Comment_idCommunity" Association="vkDBUsersNamespace.Store.Community_Comment_idCommunity">
+      <End Role="Community" EntitySet="Community" />
+      <End Role="Community_Contains_Comment" EntitySet="Community_Contains_Comment" />
+    </AssociationSet>
+    <AssociationSet Name="Community_idCommunity" Association="vkDBUsersNamespace.Store.Community_idCommunity">
+      <End Role="Community" EntitySet="Community" />
+      <End Role="Community_Contains_User" EntitySet="Community_Contains_User" />
+    </AssociationSet>
+    <AssociationSet Name="idPlace_Community" Association="vkDBUsersNamespace.Store.idPlace_Community">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="Community" EntitySet="Community" />
+    </AssociationSet>
+    <AssociationSet Name="idUser_Settings" Association="vkDBUsersNamespace.Store.idUser_Settings">
+      <End Role="User" EntitySet="User" />
+      <End Role="Settings" EntitySet="Settings" />
+    </AssociationSet>
+    <AssociationSet Name="List_idList" Association="vkDBUsersNamespace.Store.List_idList">
+      <End Role="MessagingList" EntitySet="MessagingList" />
+      <End Role="Message_IncludeIn_MessagingList" EntitySet="Message_IncludeIn_MessagingList" />
+    </AssociationSet>
+    <AssociationSet Name="List_User_idList" Association="vkDBUsersNamespace.Store.List_User_idList">
+      <End Role="MessagingList" EntitySet="MessagingList" />
+      <End Role="MessagingList_Contains_User" EntitySet="MessagingList_Contains_User" />
+    </AssociationSet>
+    <AssociationSet Name="List_User_idUser" Association="vkDBUsersNamespace.Store.List_User_idUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="MessagingList_Contains_User" EntitySet="MessagingList_Contains_User" />
+    </AssociationSet>
+    <AssociationSet Name="Material_User_idUser" Association="vkDBUsersNamespace.Store.Material_User_idUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="Material" EntitySet="Material" />
+    </AssociationSet>
+    <AssociationSet Name="Message_idMessage" Association="vkDBUsersNamespace.Store.Message_idMessage">
+      <End Role="Message" EntitySet="Message" />
+      <End Role="Message_IncludeIn_MessagingList" EntitySet="Message_IncludeIn_MessagingList" />
+    </AssociationSet>
+    <AssociationSet Name="User_idUser" Association="vkDBUsersNamespace.Store.User_idUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="Community_Contains_User" EntitySet="Community_Contains_User" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="idComment" />
+    </Key>
+    <Property Name="idComment" Type="int" Nullable="false" />
+    <Property Name="text" Type="tinytext" />
+    <Property Name="date" Type="date" />
+    <Property Name="User_idUser" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comment_Contains_Material">
+    <Key>
+      <PropertyRef Name="Comment_idComment" />
+      <PropertyRef Name="Material_idMaterial" />
+    </Key>
+    <Property Name="Comment_idComment" Type="int" Nullable="false" />
+    <Property Name="Material_idMaterial" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Community">
+    <Key>
+      <PropertyRef Name="idCommunity" />
+    </Key>
+    <Property Name="idCommunity" Type="int" Nullable="false" />
+    <Property Name="name_community" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="is_Closed" Type="int" Nullable="false" />
+    <Property Name="deactivated" Type="varchar" MaxLength="45" />
+    <Property Name="is_admin" Type="int" />
+    <Property Name="admin_level" Type="int" />
+    <Property Name="is_member" Type="int" Nullable="false" />
+    <Property Name="type" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="photo_100" Type="varchar" MaxLength="300" />
+    <Property Name="city" Type="varchar" MaxLength="45" />
+    <Property Name="country" Type="varchar" MaxLength="45" />
+    <Property Name="description" Type="varchar" MaxLength="45" />
+    <Property Name="wiki_page" Type="varchar" MaxLength="45" />
+    <Property Name="members_count" Type="bigint" />
+    <Property Name="start_date" Type="date" />
+    <Property Name="finish_date" Type="date" />
+    <Property Name="can_post" Type="int" Nullable="false" />
+    <Property Name="activity" Type="varchar" MaxLength="45" />
+    <Property Name="contacts" Type="varchar" MaxLength="45" />
+    <Property Name="site" Type="varchar" MaxLength="45" />
+    <Property Name="idPlace" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Community_Contains_Comment">
+    <Key>
+      <PropertyRef Name="Community_idCommunity" />
+      <PropertyRef Name="Comment_idComment" />
+    </Key>
+    <Property Name="Community_idCommunity" Type="int" Nullable="false" />
+    <Property Name="Comment_idComment" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Community_Contains_User">
+    <Key>
+      <PropertyRef Name="Community_idCommunity" />
+      <PropertyRef Name="User_idUser" />
+    </Key>
+    <Property Name="Community_idCommunity" Type="int" Nullable="false" />
+    <Property Name="User_idUser" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Material">
+    <Key>
+      <PropertyRef Name="idMaterial" />
+    </Key>
+    <Property Name="idMaterial" Type="int" Nullable="false" />
+    <Property Name="linkMaterial" Type="varchar" MaxLength="300" />
+    <Property Name="count_comments" Type="int" />
+    <Property Name="User_idUser" Type="int" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="idMessage" />
+    </Key>
+    <Property Name="idMessage" Type="int" Nullable="false" />
+    <Property Name="text_Message" Type="mediumtext" />
+    <Property Name="media_link" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="Message_IncludeIn_MessagingList">
+    <Key>
+      <PropertyRef Name="Message_idMessage" />
+      <PropertyRef Name="List_idList" />
+    </Key>
+    <Property Name="Message_idMessage" Type="int" Nullable="false" />
+    <Property Name="List_idList" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MessagingList">
+    <Key>
+      <PropertyRef Name="idMessagingList" />
+    </Key>
+    <Property Name="idMessagingList" Type="int" Nullable="false" />
+    <Property Name="dateList" Type="date" />
+    <Property Name="noteList" Type="mediumtext" />
+  </EntityType>
+  <EntityType Name="MessagingList_Contains_User">
+    <Key>
+      <PropertyRef Name="MessagingList_idList" />
+      <PropertyRef Name="User_idUser" />
+    </Key>
+    <Property Name="MessagingList_idList" Type="int" Nullable="false" />
+    <Property Name="User_idUser" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Place">
+    <Key>
+      <PropertyRef Name="idPlace" />
+    </Key>
+    <Property Name="idPlace" Type="int" Nullable="false" />
+    <Property Name="title" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="latitude" Type="float" Nullable="false" />
+    <Property Name="longtitude" Type="float" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="45" />
+    <Property Name="country" Type="int" />
+    <Property Name="city" Type="int" />
+    <Property Name="address" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Settings">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="int" Nullable="false" />
+    <Property Name="Settings" Type="blob" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="int" Nullable="false" />
+    <Property Name="first_name" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="last_name" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="deactivated" Type="varchar" MaxLength="10" />
+    <Property Name="sex" Type="int" />
+    <Property Name="bdate" Type="varchar" MaxLength="15" />
+    <Property Name="city" Type="varchar" MaxLength="45" />
+    <Property Name="country" Type="varchar" MaxLength="45" />
+    <Property Name="photo_100" Type="varchar" MaxLength="300" />
+    <Property Name="mobile_phone" Type="varchar" MaxLength="45" />
+    <Property Name="home_phone" Type="varchar" MaxLength="45" />
+    <Property Name="university_name" Type="varchar" MaxLength="45" />
+    <Property Name="faculty_name" Type="varchar" MaxLength="45" />
+    <Property Name="graduation" Type="varchar" MaxLength="45" />
+    <Property Name="now_university_name" Type="varchar" MaxLength="45" />
+    <Property Name="now_faculty_name" Type="varchar" MaxLength="45" />
+    <Property Name="now_chair_name" Type="varchar" MaxLength="45" />
+    <Property Name="now_graduation" Type="varchar" MaxLength="45" />
+    <Property Name="school_name" Type="varchar" MaxLength="45" />
+    <Property Name="school_year_from" Type="int" />
+    <Property Name="school_year_to" Type="int" />
+    <Property Name="school_graduated" Type="int" />
+    <Property Name="occupation_type" Type="varchar" MaxLength="45" />
+    <Property Name="occupation_name" Type="varchar" MaxLength="45" />
+    <Property Name="nickname" Type="varchar" MaxLength="45" />
+    <Property Name="relation" Type="int" />
+    <Property Name="skype" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <Association Name="Comment_idUser">
+    <End Role="User" Type="vkDBUsersNamespace.Store.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Comment" Type="vkDBUsersNamespace.Store.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="User_idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Comment_Material_idComment">
+    <End Role="Comment" Type="vkDBUsersNamespace.Store.Comment" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Comment_Contains_Material" Type="vkDBUsersNamespace.Store.Comment_Contains_Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comment">
+        <PropertyRef Name="idComment" />
+      </Principal>
+      <Dependent Role="Comment_Contains_Material">
+        <PropertyRef Name="Comment_idComment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Comment_Material_idMaterial">
+    <End Role="Material" Type="vkDBUsersNamespace.Store.Material" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Comment_Contains_Material" Type="vkDBUsersNamespace.Store.Comment_Contains_Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="idMaterial" />
+      </Principal>
+      <Dependent Role="Comment_Contains_Material">
+        <PropertyRef Name="Material_idMaterial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Community_Comment_idComment">
+    <End Role="Comment" Type="vkDBUsersNamespace.Store.Comment" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Community_Contains_Comment" Type="vkDBUsersNamespace.Store.Community_Contains_Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comment">
+        <PropertyRef Name="idComment" />
+      </Principal>
+      <Dependent Role="Community_Contains_Comment">
+        <PropertyRef Name="Comment_idComment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Community_Comment_idCommunity">
+    <End Role="Community" Type="vkDBUsersNamespace.Store.Community" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Community_Contains_Comment" Type="vkDBUsersNamespace.Store.Community_Contains_Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Community">
+        <PropertyRef Name="idCommunity" />
+      </Principal>
+      <Dependent Role="Community_Contains_Comment">
+        <PropertyRef Name="Community_idCommunity" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Community_idCommunity">
+    <End Role="Community" Type="vkDBUsersNamespace.Store.Community" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Community_Contains_User" Type="vkDBUsersNamespace.Store.Community_Contains_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Community">
+        <PropertyRef Name="idCommunity" />
+      </Principal>
+      <Dependent Role="Community_Contains_User">
+        <PropertyRef Name="Community_idCommunity" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="idPlace_Community">
+    <End Role="Place" Type="vkDBUsersNamespace.Store.Place" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Community" Type="vkDBUsersNamespace.Store.Community" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="idPlace" />
+      </Principal>
+      <Dependent Role="Community">
+        <PropertyRef Name="idPlace" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="idUser_Settings">
+    <End Role="User" Type="vkDBUsersNamespace.Store.User" Multiplicity="1" />
+    <End Role="Settings" Type="vkDBUsersNamespace.Store.Settings" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Settings">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="List_idList">
+    <End Role="MessagingList" Type="vkDBUsersNamespace.Store.MessagingList" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Message_IncludeIn_MessagingList" Type="vkDBUsersNamespace.Store.Message_IncludeIn_MessagingList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MessagingList">
+        <PropertyRef Name="idMessagingList" />
+      </Principal>
+      <Dependent Role="Message_IncludeIn_MessagingList">
+        <PropertyRef Name="List_idList" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="List_User_idList">
+    <End Role="MessagingList" Type="vkDBUsersNamespace.Store.MessagingList" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MessagingList_Contains_User" Type="vkDBUsersNamespace.Store.MessagingList_Contains_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MessagingList">
+        <PropertyRef Name="idMessagingList" />
+      </Principal>
+      <Dependent Role="MessagingList_Contains_User">
+        <PropertyRef Name="MessagingList_idList" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="List_User_idUser">
+    <End Role="User" Type="vkDBUsersNamespace.Store.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MessagingList_Contains_User" Type="vkDBUsersNamespace.Store.MessagingList_Contains_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="MessagingList_Contains_User">
+        <PropertyRef Name="User_idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Material_User_idUser">
+    <End Role="User" Type="vkDBUsersNamespace.Store.User" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Material" Type="vkDBUsersNamespace.Store.Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Material">
+        <PropertyRef Name="User_idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Message_idMessage">
+    <End Role="Message" Type="vkDBUsersNamespace.Store.Message" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Message_IncludeIn_MessagingList" Type="vkDBUsersNamespace.Store.Message_IncludeIn_MessagingList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Message">
+        <PropertyRef Name="idMessage" />
+      </Principal>
+      <Dependent Role="Message_IncludeIn_MessagingList">
+        <PropertyRef Name="Message_idMessage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="User_idUser">
+    <End Role="User" Type="vkDBUsersNamespace.Store.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Community_Contains_User" Type="vkDBUsersNamespace.Store.Community_Contains_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Community_Contains_User">
+        <PropertyRef Name="User_idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,72 @@
+﻿<Window x:Class="vkManageFinal.FilterPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FilterPanel" Height="473.541" Width="400" WindowStyle="None" ResizeMode="NoResize" Icon="Images/vkontakte-128x128.png" WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown_1">
+    <Border x:Name="BorderFilterStackPanel" Canvas.Top="3" Canvas.Left="-435" BorderBrush="White" BorderThickness="1">
+        <StackPanel HorizontalAlignment="Center" x:Name="FilterStackPanel" Opacity="1" Width="400
+                        " Canvas.Left="-452" Canvas.Top="28" Background="#FF787878" Margin="-1">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Label}">
+                    <Setter Property="Foreground" Value="White"></Setter>
+                </Style>
+
+
+            </StackPanel.Resources>
+            <Label HorizontalAlignment="Center" Content="За статтю" Height="27" Margin="164,0"/>
+            <ComboBox x:Name="Gender" Margin="80,0,80,0" SelectionChanged="Gender_SelectionChanged">
+                <ComboBoxItem IsSelected="True">Чоловіча</ComboBoxItem>
+                <ComboBoxItem>Жіноча</ComboBoxItem>
+            </ComboBox>
+            <Label HorizontalAlignment="Center" Content="За віком" Height="23" Margin="166,0"/>
+            <StackPanel Height="32" Margin="80,0">
+                <WrapPanel/>
+                <WrapPanel>
+                    <Label Content="Від" Width="27"/>
+                    <TextBox x:Name="YearFrom"  Height="20" Width="78" TextChanged="TextBox_TextChanged_1"></TextBox>
+                    <Label Content="до" Width="48"/>
+                    <TextBox x:Name="YearTo" Height="20" Width="78" TextChanged="YearTo_TextChanged" ></TextBox>
+                </WrapPanel>
+            </StackPanel>
+            <Label HorizontalAlignment="Center" Margin="134,0">За датою нарождення</Label>
+            <WrapPanel IsEnabled="False" HorizontalAlignment="Center" Height="24" Margin="80,0" Width="240">
+                <Label>Рік</Label>
+                <TextBox x:Name="YearBirthdayFrom" Height="20"  Width="78" TextChanged="YearBirthdayFrom_TextChanged"></TextBox>
+                <Label>Місяць</Label>
+                <ComboBox x:Name="Month"  Height="20" Width="78" SelectionChanged="Month_SelectionChanged">
+                    <ComboBoxItem IsSelected="True">Місяць</ComboBoxItem>
+                    <ComboBoxItem>Січень</ComboBoxItem>
+                    <ComboBoxItem>Лютий</ComboBoxItem>
+                    <ComboBoxItem>Березень</ComboBoxItem>
+                    <ComboBoxItem>Квітень</ComboBoxItem>
+                    <ComboBoxItem>Травень</ComboBoxItem>
+                    <ComboBoxItem>Червень</ComboBoxItem>
+                    <ComboBoxItem>Липень</ComboBoxItem>
+                    <ComboBoxItem>Серпень</ComboBoxItem>
+                    <ComboBoxItem>Вересень</ComboBoxItem>
+                    <ComboBoxItem>Жовтень</ComboBoxItem>
+                    <ComboBoxItem>Листопад</ComboBoxItem>
+                    <ComboBoxItem>Грудень</ComboBoxItem>
+                </ComboBox>
+            </WrapPanel>
+            <Label HorizontalAlignment="Center">За країною</Label>
+            <ComboBox x:Name="Countries" Margin="80,0" SelectionChanged="Countries_SelectionChanged">
+                <ComboBoxItem IsSelected="True">Оберіть країну</ComboBoxItem>
+            </ComboBox>
+            <Label HorizontalAlignment="Center">За містом</Label>
+            <ComboBox x:Name="Cities" Margin="80,0" SelectionChanged="Cities_SelectionChanged">
+                <ComboBoxItem IsSelected="True">Оберіть місто</ComboBoxItem>
+            </ComboBox>
+            <Label HorizontalAlignment="Center">Військова служба</Label>
+            <TextBox IsEnabled="False" x:Name="Military" Height="20" Margin="80,0"></TextBox>
+            <Label HorizontalAlignment="Center">Сімейний стан</Label>
+            <ComboBox IsEnabled="False" x:Name="FamilyInformation" Margin="80,0">
+                <ComboBoxItem IsSelected="True">Оберіть сімейній стан</ComboBoxItem>
+            </ComboBox>
+            <Label HorizontalAlignment="Center">По міткам</Label>
+            <CheckBox IsEnabled="False" Foreground="White" Margin="169,0,80,0">Друзі</CheckBox>
+            <CheckBox IsEnabled="False"  Foreground="White" Margin="169,0,80,0">Колеги</CheckBox>
+            <Button x:Name="OkBtn" Margin="118,10" Click="OkBtn_Click">Знайти</Button>
+            <Button x:Name="CancelBtn" Margin="118,0" Click="CancelBtn_Click">Відмініти</Button>
+        </StackPanel>
+    </Border>
+</Window>

@@ -1,0 +1,144 @@
+﻿<Window x:Class="vkManageFinal.MainWindow"
+        x:Name="MainWWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:lex="http://wpflocalizeextension.codeplex.com"
+        lex:LocalizeDictionary.DesignCulture="en"
+        lex:ResxLocalizationProvider.DefaultAssembly="AssemblyTestResourceLib"
+        lex:ResxLocalizationProvider.DefaultDictionary="Strings"
+        FlowDirection="{lex:Loc FlowDirection}"
+        Title="{lex:Loc WindowTitle}"  Height="554" Width="921" MinHeight="554" MinWidth="912" Background="#FF266591" Icon="Images/vkontakte-128x128.png" SizeChanged="MainWWindow_SizeChanged">
+    <DockPanel>
+        <Border Height="20" Background="AliceBlue" DockPanel.Dock="Top">
+            <Menu x:Name="MainMenu" IsMainMenu="True">
+                <MenuItem Header="File">
+                    <MenuItem Header="Змінити користувача" Click="MenuItem_Click_1"></MenuItem>
+                    <MenuItem Header="Зберегти список до файлу xml" Click="MenuItem_Click_2"></MenuItem>
+                    <MenuItem Header="Завантажити список з файлу xml" Click="MenuItem_Click_3"></MenuItem>
+                    <MenuItem Header="Завантажити список з БД"></MenuItem>
+                    <MenuItem Header="Зберегти список в БД"></MenuItem>
+                    <MenuItem Header="Сбросити фільтр" Click="MenuItem_Click_5"></MenuItem>
+                    <MenuItem Header="Установить английский язык" Click="MenuItem_Click_4"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Edit"></MenuItem>
+                <MenuItem Header="View"></MenuItem>
+                <MenuItem Header="Window"></MenuItem>
+                <MenuItem Header="Help"></MenuItem>
+
+
+            </Menu>
+        </Border>
+        <Border Height="20" DockPanel.Dock="Top">
+            <TextBlock x:Name="PluginName" Padding="10,0,0,0" FontSize="15"  Background="#99DEDEDE">PluginName</TextBlock>
+        </Border>
+        <Border x:Name="PluginNameWrap" Height="20" Background="LightSteelBlue" DockPanel.Dock="Bottom">
+            <Label x:Name="StatusLabel" Padding="10,0,0,5" FontSize="12.5"  Background="#997A7A7A" Foreground="White">Статус: зараз нічого не виконується.</Label>
+        </Border>
+        
+        <Border>
+            <DockPanel x:Name="MainContent">
+                <ScrollViewer x:Name="NavigateMenuWrapper" Width="206" DockPanel.Dock="Left">
+                    <StackPanel x:Name="NavigateMenu"  Background="#66DEDEDE" Width="192" >
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Height" Value="25"></Setter>
+                                <Setter Property="Margin" Value="5,5,7,0"></Setter>
+                                <Setter Property="Background" Value="#CC266591"></Setter>
+                                <Setter Property="Foreground" Value="White"></Setter>
+                                <Setter Property="BorderThickness" Value="0"></Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Foreground" Value="Black"/>
+                                        <Setter Property="BorderThickness" Value="3"></Setter>
+                                        <Setter Property="BorderBrush" Value="Blue"></Setter>
+
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Resources>
+                        <Image x:Name="UserPhoto" Height="143" Stretch="Fill" Source="Images/user-icon1.jpg" Margin="10,10,10,0"/>
+
+                    </StackPanel>
+                </ScrollViewer>
+
+                <StackPanel x:Name="WorkWithUserStackPanel" Background="#66DEDEDE" DockPanel.Dock="Top">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Margin" Value="5,15,5,0"></Setter>
+                            <Setter Property="Background" Value="#CC266591"></Setter>
+                            <Setter Property="Foreground" Value="White"></Setter>
+                            <Setter Property="BorderThickness" Value="0"></Setter>
+                            <Setter Property="Height" Value="30"></Setter>
+                            <Setter Property="Width" Value="250"></Setter>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="Black"/>
+                                    <Setter Property="BorderThickness" Value="3"></Setter>
+                                    <Setter Property="BorderBrush" Value="Blue"></Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Resources>
+                    <GroupBox x:Name="Manipulations" Header="Управління" Margin="2,0,2,2" Height="238">
+                        <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" >
+                            <WrapPanel x:Name="FunctionsByNavigateItemPanel">
+
+
+                            </WrapPanel>
+                        </ScrollViewer>
+                    </GroupBox>
+                    <Border x:Name="Spliter" Width="auto" BorderThickness="3" MouseDown="Spiter_MouseDown" MouseMove="Spliter_MouseMove" MouseUp="Spliter_MouseUp">
+                        <Border.BorderBrush>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White" Offset="1"/>
+                                <GradientStop Color="#FF747474" Offset="0.357"/>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+                    </Border>
+                    <ListView x:Name="CallBackList" ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.CanContentScroll="True" SelectionMode="Multiple" >
+                        <ListView.Resources>
+                            <DataTemplate x:Key="FirstCell">
+                                <StackPanel Orientation="Horizontal">
+                                    <CheckBox IsChecked="{Binding Path=IsSelected, 
+                                    RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.Resources>
+                            <ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}">
+                                <Setter Property="BorderBrush" Value="LightGray" />
+                                <Setter Property="BorderThickness" Value="0,0,1,1" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.ContextMenu>
+                            <ContextMenu>
+                                <ContextMenu.Items>
+                                    <MenuItem x:Name="SendMessageButton" Header="Відправити повідомлення" Click="SendMessageButton_Click"></MenuItem>
+                                    <MenuItem x:Name="MakeSerchByFilters" Header="Фільтрувати користувачів" Click="MakeSerchByFilters_Click"></MenuItem>
+                                    <MenuItem x:Name="DeleteTheSame" Header="Видалення id що повторюються"></MenuItem>
+                                </ContextMenu.Items>
+                            </ContextMenu>
+                        </ListView.ContextMenu>
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn Width="40" CellTemplate="{StaticResource FirstCell}"></GridViewColumn>
+                                    <GridViewColumn Header="Ім'я" Width="100" DisplayMemberBinding="{Binding Path=Name}"></GridViewColumn>
+                                    <GridViewColumn Header="Прізвище" Width="80" DisplayMemberBinding="{Binding Path=LastName}"></GridViewColumn>
+                                    <GridViewColumn Header="Стать" Width="80" DisplayMemberBinding="{Binding Path=Gender}"></GridViewColumn>
+                                    <GridViewColumn Header="Вік" Width="80" DisplayMemberBinding="{Binding Path=Age}"></GridViewColumn>
+                                    <GridViewColumn Header="Країна" Width="80" DisplayMemberBinding="{Binding Path=Country}"></GridViewColumn>
+                                    <GridViewColumn Header="Область" Width="80" DisplayMemberBinding="{Binding Path=Region}"></GridViewColumn>
+                                    <GridViewColumn Header="Місто" Width="80" DisplayMemberBinding="{Binding Path=City}"></GridViewColumn>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                        
+                    </ListView>
+                </StackPanel>
+            </DockPanel>
+
+        </Border>
+    </DockPanel>
+</Window>

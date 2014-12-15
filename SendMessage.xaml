@@ -1,0 +1,19 @@
+﻿<Window x:Name="MessageWindow"
+        x:Class="vkManageFinal.SendMessage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Повідомлення" Height="339.933" Width="300" ResizeMode="NoResize"  WindowStartupLocation="CenterScreen" KeyDown="MessageWindow_KeyDown">
+
+    <StackPanel Background="#FF787878">
+
+        <Label FontSize="15" Height="auto" HorizontalAlignment="Center" Content="Користувач"></Label>
+        <TextBox Height="25" x:Name="UserName" TextAlignment="Center" IsEnabled="False" HorizontalAlignment="Center" Width="250"></TextBox>
+        <Label FontSize="15" Height="auto" HorizontalAlignment="Center" Content="Повідомлення"></Label>
+        <TextBox x:Name="Message" Height="131" HorizontalAlignment="Center" Width="250" Margin="0,1"></TextBox>
+        <Button Height="25" x:Name="SendMessageToUser" HorizontalAlignment="Center" Content="Відіслати" Width="250"  Margin="0,1" Click="SendMessage_Click_1"/>
+        <Button Height="25" x:Name="Cancel" Content="Відмініти" Width="250" Margin="0,1"/>
+        <Label x:Name="SuccessSend" FontSize="15" Opacity="0" Height="auto" HorizontalAlignment="Center" Content="Повідомлення відправлено!" Foreground="#FF60FF7D"></Label>
+
+    </StackPanel>
+    
+</Window>

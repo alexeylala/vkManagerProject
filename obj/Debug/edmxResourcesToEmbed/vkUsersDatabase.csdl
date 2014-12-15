@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="vkDBUsersNamespace" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="vkUsersDatabase" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Comment" EntityType="vkDBUsersNamespace.Comment" />
+    <EntitySet Name="Community" EntityType="vkDBUsersNamespace.Community" />
+    <EntitySet Name="Material" EntityType="vkDBUsersNamespace.Material" />
+    <EntitySet Name="Message" EntityType="vkDBUsersNamespace.Message" />
+    <EntitySet Name="MessagingList" EntityType="vkDBUsersNamespace.MessagingList" />
+    <EntitySet Name="Place" EntityType="vkDBUsersNamespace.Place" />
+    <EntitySet Name="Settings" EntityType="vkDBUsersNamespace.Settings" />
+    <EntitySet Name="User" EntityType="vkDBUsersNamespace.User" />
+    <AssociationSet Name="Comment_idUser" Association="vkDBUsersNamespace.Comment_idUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="idPlace_Community" Association="vkDBUsersNamespace.idPlace_Community">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="Community" EntitySet="Community" />
+    </AssociationSet>
+    <AssociationSet Name="Material_User_idUser" Association="vkDBUsersNamespace.Material_User_idUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="Material" EntitySet="Material" />
+    </AssociationSet>
+    <AssociationSet Name="idUser_Settings" Association="vkDBUsersNamespace.idUser_Settings">
+      <End Role="User" EntitySet="User" />
+      <End Role="Settings" EntitySet="Settings" />
+    </AssociationSet>
+    <AssociationSet Name="Comment_Contains_Material" Association="vkDBUsersNamespace.Comment_Contains_Material">
+      <End Role="Comment" EntitySet="Comment" />
+      <End Role="Material" EntitySet="Material" />
+    </AssociationSet>
+    <AssociationSet Name="Community_Contains_Comment" Association="vkDBUsersNamespace.Community_Contains_Comment">
+      <End Role="Comment" EntitySet="Comment" />
+      <End Role="Community" EntitySet="Community" />
+    </AssociationSet>
+    <AssociationSet Name="Community_Contains_User" Association="vkDBUsersNamespace.Community_Contains_User">
+      <End Role="Community" EntitySet="Community" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="Message_IncludeIn_MessagingList" Association="vkDBUsersNamespace.Message_IncludeIn_MessagingList">
+      <End Role="MessagingList" EntitySet="MessagingList" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="MessagingList_Contains_User" Association="vkDBUsersNamespace.MessagingList_Contains_User">
+      <End Role="MessagingList" EntitySet="MessagingList" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="idComment" />
+    </Key>
+    <Property Name="idComment" Type="Int32" Nullable="false" />
+    <Property Name="text" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="date" Type="DateTime" Precision="0" />
+    <Property Name="User_idUser" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="vkDBUsersNamespace.Comment_idUser" FromRole="Comment" ToRole="User" />
+    <NavigationProperty Name="Material" Relationship="vkDBUsersNamespace.Comment_Contains_Material" FromRole="Comment" ToRole="Material" />
+    <NavigationProperty Name="Community" Relationship="vkDBUsersNamespace.Community_Contains_Comment" FromRole="Comment" ToRole="Community" />
+  </EntityType>
+  <EntityType Name="Community">
+    <Key>
+      <PropertyRef Name="idCommunity" />
+    </Key>
+    <Property Name="idCommunity" Type="Int32" Nullable="false" />
+    <Property Name="name_community" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="is_Closed" Type="Int32" Nullable="false" />
+    <Property Name="deactivated" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="is_admin" Type="Int32" />
+    <Property Name="admin_level" Type="Int32" />
+    <Property Name="is_member" Type="Int32" Nullable="false" />
+    <Property Name="type" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="photo_100" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="city" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="country" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="wiki_page" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="members_count" Type="Int64" />
+    <Property Name="start_date" Type="DateTime" Precision="0" />
+    <Property Name="finish_date" Type="DateTime" Precision="0" />
+    <Property Name="can_post" Type="Int32" Nullable="false" />
+    <Property Name="activity" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="contacts" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="site" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="idPlace" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Place" Relationship="vkDBUsersNamespace.idPlace_Community" FromRole="Community" ToRole="Place" />
+    <NavigationProperty Name="Comment" Relationship="vkDBUsersNamespace.Community_Contains_Comment" FromRole="Community" ToRole="Comment" />
+    <NavigationProperty Name="User" Relationship="vkDBUsersNamespace.Community_Contains_User" FromRole="Community" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Material">
+    <Key>
+      <PropertyRef Name="idMaterial" />
+    </Key>
+    <Property Name="idMaterial" Type="Int32" Nullable="false" />
+    <Property Name="linkMaterial" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="count_comments" Type="Int32" />
+    <Property Name="User_idUser" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="vkDBUsersNamespace.Material_User_idUser" FromRole="Material" ToRole="User" />
+    <NavigationProperty Name="Comment" Relationship="vkDBUsersNamespace.Comment_Contains_Material" FromRole="Material" ToRole="Comment" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="idMessage" />
+    </Key>
+    <Property Name="idMessage" Type="Int32" Nullable="false" />
+    <Property Name="text_Message" Type="String" MaxLength="16777215" Unicode="false" FixedLength="false" />
+    <Property Name="media_link" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="MessagingList" Relationship="vkDBUsersNamespace.Message_IncludeIn_MessagingList" FromRole="Message" ToRole="MessagingList" />
+  </EntityType>
+  <EntityType Name="MessagingList">
+    <Key>
+      <PropertyRef Name="idMessagingList" />
+    </Key>
+    <Property Name="idMessagingList" Type="Int32" Nullable="false" />
+    <Property Name="dateList" Type="DateTime" Precision="0" />
+    <Property Name="noteList" Type="String" MaxLength="16777215" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Message" Relationship="vkDBUsersNamespace.Message_IncludeIn_MessagingList" FromRole="MessagingList" ToRole="Message" />
+    <NavigationProperty Name="User" Relationship="vkDBUsersNamespace.MessagingList_Contains_User" FromRole="MessagingList" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Place">
+    <Key>
+      <PropertyRef Name="idPlace" />
+    </Key>
+    <Property Name="idPlace" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="latitude" Type="Single" Nullable="false" />
+    <Property Name="longtitude" Type="Single" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="country" Type="Int32" />
+    <Property Name="city" Type="Int32" />
+    <Property Name="address" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Community" Relationship="vkDBUsersNamespace.idPlace_Community" FromRole="Place" ToRole="Community" />
+  </EntityType>
+  <EntityType Name="Settings">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="Int32" Nullable="false" />
+    <Property Name="Settings1" Type="Binary" MaxLength="65535" FixedLength="false" />
+    <NavigationProperty Name="User" Relationship="vkDBUsersNamespace.idUser_Settings" FromRole="Settings" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="Int32" Nullable="false" />
+    <Property Name="first_name" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="last_name" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="deactivated" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="sex" Type="Int32" />
+    <Property Name="bdate" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="city" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="country" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="photo_100" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="mobile_phone" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="home_phone" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="university_name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="faculty_name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="graduation" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="now_university_name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="now_faculty_name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="now_chair_name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="now_graduation" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="school_name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="school_year_from" Type="Int32" />
+    <Property Name="school_year_to" Type="Int32" />
+    <Property Name="school_graduated" Type="Int32" />
+    <Property Name="occupation_type" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="occupation_name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="nickname" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="relation" Type="Int32" />
+    <Property Name="skype" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Comment" Relationship="vkDBUsersNamespace.Comment_idUser" FromRole="User" ToRole="Comment" />
+    <NavigationProperty Name="Material" Relationship="vkDBUsersNamespace.Material_User_idUser" FromRole="User" ToRole="Material" />
+    <NavigationProperty Name="Settings" Relationship="vkDBUsersNamespace.idUser_Settings" FromRole="User" ToRole="Settings" />
+    <NavigationProperty Name="Community" Relationship="vkDBUsersNamespace.Community_Contains_User" FromRole="User" ToRole="Community" />
+    <NavigationProperty Name="MessagingList" Relationship="vkDBUsersNamespace.MessagingList_Contains_User" FromRole="User" ToRole="MessagingList" />
+  </EntityType>
+  <Association Name="Comment_idUser">
+    <End Role="User" Type="vkDBUsersNamespace.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Comment" Type="vkDBUsersNamespace.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="User_idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="idPlace_Community">
+    <End Role="Place" Type="vkDBUsersNamespace.Place" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Community" Type="vkDBUsersNamespace.Community" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="idPlace" />
+      </Principal>
+      <Dependent Role="Community">
+        <PropertyRef Name="idPlace" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Material_User_idUser">
+    <End Role="User" Type="vkDBUsersNamespace.User" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Material" Type="vkDBUsersNamespace.Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Material">
+        <PropertyRef Name="User_idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="idUser_Settings">
+    <End Role="User" Type="vkDBUsersNamespace.User" Multiplicity="1" />
+    <End Role="Settings" Type="vkDBUsersNamespace.Settings" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Settings">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Comment_Contains_Material">
+    <End Role="Comment" Type="vkDBUsersNamespace.Comment" Multiplicity="*" />
+    <End Role="Material" Type="vkDBUsersNamespace.Material" Multiplicity="*" />
+  </Association>
+  <Association Name="Community_Contains_Comment">
+    <End Role="Comment" Type="vkDBUsersNamespace.Comment" Multiplicity="*" />
+    <End Role="Community" Type="vkDBUsersNamespace.Community" Multiplicity="*" />
+  </Association>
+  <Association Name="Community_Contains_User">
+    <End Role="Community" Type="vkDBUsersNamespace.Community" Multiplicity="*" />
+    <End Role="User" Type="vkDBUsersNamespace.User" Multiplicity="*" />
+  </Association>
+  <Association Name="Message_IncludeIn_MessagingList">
+    <End Role="MessagingList" Type="vkDBUsersNamespace.MessagingList" Multiplicity="*" />
+    <End Role="Message" Type="vkDBUsersNamespace.Message" Multiplicity="*" />
+  </Association>
+  <Association Name="MessagingList_Contains_User">
+    <End Role="MessagingList" Type="vkDBUsersNamespace.MessagingList" Multiplicity="*" />
+    <End Role="User" Type="vkDBUsersNamespace.User" Multiplicity="*" />
+  </Association>
+</Schema>

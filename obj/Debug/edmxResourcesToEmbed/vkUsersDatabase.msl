@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="vkDBUsersNamespaceStoreContainer" CdmEntityContainer="vkUsersDatabase">
+    <EntitySetMapping Name="Comment">
+      <EntityTypeMapping TypeName="vkDBUsersNamespace.Comment">
+        <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="idComment" ColumnName="idComment" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="User_idUser" ColumnName="User_idUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Community">
+      <EntityTypeMapping TypeName="vkDBUsersNamespace.Community">
+        <MappingFragment StoreEntitySet="Community">
+          <ScalarProperty Name="idCommunity" ColumnName="idCommunity" />
+          <ScalarProperty Name="name_community" ColumnName="name_community" />
+          <ScalarProperty Name="is_Closed" ColumnName="is_Closed" />
+          <ScalarProperty Name="deactivated" ColumnName="deactivated" />
+          <ScalarProperty Name="is_admin" ColumnName="is_admin" />
+          <ScalarProperty Name="admin_level" ColumnName="admin_level" />
+          <ScalarProperty Name="is_member" ColumnName="is_member" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="photo_100" ColumnName="photo_100" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="wiki_page" ColumnName="wiki_page" />
+          <ScalarProperty Name="members_count" ColumnName="members_count" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="finish_date" ColumnName="finish_date" />
+          <ScalarProperty Name="can_post" ColumnName="can_post" />
+          <ScalarProperty Name="activity" ColumnName="activity" />
+          <ScalarProperty Name="contacts" ColumnName="contacts" />
+          <ScalarProperty Name="site" ColumnName="site" />
+          <ScalarProperty Name="idPlace" ColumnName="idPlace" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Material">
+      <EntityTypeMapping TypeName="vkDBUsersNamespace.Material">
+        <MappingFragment StoreEntitySet="Material">
+          <ScalarProperty Name="idMaterial" ColumnName="idMaterial" />
+          <ScalarProperty Name="linkMaterial" ColumnName="linkMaterial" />
+          <ScalarProperty Name="count_comments" ColumnName="count_comments" />
+          <ScalarProperty Name="User_idUser" ColumnName="User_idUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Message">
+      <EntityTypeMapping TypeName="vkDBUsersNamespace.Message">
+        <MappingFragment StoreEntitySet="Message">
+          <ScalarProperty Name="idMessage" ColumnName="idMessage" />
+          <ScalarProperty Name="text_Message" ColumnName="text_Message" />
+          <ScalarProperty Name="media_link" ColumnName="media_link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessagingList">
+      <EntityTypeMapping TypeName="vkDBUsersNamespace.MessagingList">
+        <MappingFragment StoreEntitySet="MessagingList">
+          <ScalarProperty Name="idMessagingList" ColumnName="idMessagingList" />
+          <ScalarProperty Name="dateList" ColumnName="dateList" />
+          <ScalarProperty Name="noteList" ColumnName="noteList" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Place">
+      <EntityTypeMapping TypeName="vkDBUsersNamespace.Place">
+        <MappingFragment StoreEntitySet="Place">
+          <ScalarProperty Name="idPlace" ColumnName="idPlace" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longtitude" ColumnName="longtitude" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="address" ColumnName="address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Settings">
+      <EntityTypeMapping TypeName="vkDBUsersNamespace.Settings">
+        <MappingFragment StoreEntitySet="Settings">
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="Settings1" ColumnName="Settings" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="vkDBUsersNamespace.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="deactivated" ColumnName="deactivated" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="bdate" ColumnName="bdate" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="photo_100" ColumnName="photo_100" />
+          <ScalarProperty Name="mobile_phone" ColumnName="mobile_phone" />
+          <ScalarProperty Name="home_phone" ColumnName="home_phone" />
+          <ScalarProperty Name="university_name" ColumnName="university_name" />
+          <ScalarProperty Name="faculty_name" ColumnName="faculty_name" />
+          <ScalarProperty Name="graduation" ColumnName="graduation" />
+          <ScalarProperty Name="now_university_name" ColumnName="now_university_name" />
+          <ScalarProperty Name="now_faculty_name" ColumnName="now_faculty_name" />
+          <ScalarProperty Name="now_chair_name" ColumnName="now_chair_name" />
+          <ScalarProperty Name="now_graduation" ColumnName="now_graduation" />
+          <ScalarProperty Name="school_name" ColumnName="school_name" />
+          <ScalarProperty Name="school_year_from" ColumnName="school_year_from" />
+          <ScalarProperty Name="school_year_to" ColumnName="school_year_to" />
+          <ScalarProperty Name="school_graduated" ColumnName="school_graduated" />
+          <ScalarProperty Name="occupation_type" ColumnName="occupation_type" />
+          <ScalarProperty Name="occupation_name" ColumnName="occupation_name" />
+          <ScalarProperty Name="nickname" ColumnName="nickname" />
+          <ScalarProperty Name="relation" ColumnName="relation" />
+          <ScalarProperty Name="skype" ColumnName="skype" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Comment_Contains_Material" TypeName="vkDBUsersNamespace.Comment_Contains_Material" StoreEntitySet="Comment_Contains_Material">
+      <EndProperty Name="Comment">
+        <ScalarProperty Name="idComment" ColumnName="Comment_idComment" />
+      </EndProperty>
+      <EndProperty Name="Material">
+        <ScalarProperty Name="idMaterial" ColumnName="Material_idMaterial" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Community_Contains_Comment" TypeName="vkDBUsersNamespace.Community_Contains_Comment" StoreEntitySet="Community_Contains_Comment">
+      <EndProperty Name="Comment">
+        <ScalarProperty Name="idComment" ColumnName="Comment_idComment" />
+      </EndProperty>
+      <EndProperty Name="Community">
+        <ScalarProperty Name="idCommunity" ColumnName="Community_idCommunity" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Community_Contains_User" TypeName="vkDBUsersNamespace.Community_Contains_User" StoreEntitySet="Community_Contains_User">
+      <EndProperty Name="Community">
+        <ScalarProperty Name="idCommunity" ColumnName="Community_idCommunity" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="idUser" ColumnName="User_idUser" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Message_IncludeIn_MessagingList" TypeName="vkDBUsersNamespace.Message_IncludeIn_MessagingList" StoreEntitySet="Message_IncludeIn_MessagingList">
+      <EndProperty Name="MessagingList">
+        <ScalarProperty Name="idMessagingList" ColumnName="List_idList" />
+      </EndProperty>
+      <EndProperty Name="Message">
+        <ScalarProperty Name="idMessage" ColumnName="Message_idMessage" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MessagingList_Contains_User" TypeName="vkDBUsersNamespace.MessagingList_Contains_User" StoreEntitySet="MessagingList_Contains_User">
+      <EndProperty Name="MessagingList">
+        <ScalarProperty Name="idMessagingList" ColumnName="MessagingList_idList" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="idUser" ColumnName="User_idUser" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
